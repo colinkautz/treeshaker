@@ -1,4 +1,15 @@
+<script>
+    let leaderBoardData = [
+        {username: "nightshadedude", leafs: 70000},
+        {username: "jakecreatesstuff", leafs: 60000},
+        {username: "meisaks", leafs: 55000},
+        {username: "lcolonq", leafs: 45000},
+        {username: "badcop_", leafs: 30000}
+    ];
+</script>
+
 <div class="leaderboard">
+    <h2>Leaderboard</h2>
     <table>
         <thead>
             <tr>
@@ -7,41 +18,46 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">nightshadedude</th>
-                <td class="bal">50,000</td>
-            </tr>
-            <tr>
-                <th scope="row">LColonQ</th>
-                <td class="bal">45,000</td>
-            </tr>
-            <tr>
-                <th scope="row">badcop_</th>
-                <td class="bal">40,000</td>
-            </tr>
+            {#each leaderBoardData as {username, leafs}, i}
+                <tr class={i % 2 === 0 ? 'even' : 'odd'}>
+                    <td>{username}</td>
+                    <td>{leafs}</td>
+                </tr>
+            {/each}
         </tbody>
     </table>
 </div>
 
 <style>
-    .bal {
-        text-align: right;
-    }
 
     .header {
-        font-size: 32px;
+        background-color: var(--color-golden-acorn);
+    }
+
+    .leaderboard {
+        background-color: var(--color-pine-green);
+        border-radius: 8px;
+        padding: 10px;
     }
 
     table {
         margin: 0 auto;
-        width: 500px;
-        border: 2px solid grey;
-        border-collapse: collapse;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 4px;
+        text-align: left;
     }
 
     th, td {
-        border: 1px solid grey;
-        padding: 10px;
+        padding: 5px;
         font-size: 24px;
+    }
+
+    tr.even {
+        background-color: rgb(255, 255, 255, 0.15);
+    }
+
+    tr.odd {
+        background-color: rgb(255, 255, 255, 0.05);
     }
 </style>
