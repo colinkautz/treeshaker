@@ -1,12 +1,12 @@
 :root {
-    --color-deep-forest: #19270d;
-    --color-pine-green: #25991f;
+    --color-deep-forest: #0a130c;
+    --color-pine-green: #19270d;
     --color-muted-sage: #818c3c;
     --color-golden-acorn: #72601b;
     --color-rich-walnut: #593a0e;
-    --color-white: #fff;
+    --color-white: #FFF;
+    --color-black: #000;
 }
-
 
 *, *::before, *::after {
     box-sizing: border-box;
