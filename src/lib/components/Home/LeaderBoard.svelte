@@ -2,7 +2,7 @@
     let leaderBoardData = [
         {username: "nightshadedude", leafs: 70000},
         {username: "jakecreatesstuff", leafs: 60000},
-        {username: "meisaks", leafs: 55000},
+        {username: "uwoslab", leafs: 55000},
         {username: "lcolonq", leafs: 45000},
         {username: "badcop_", leafs: 30000}
     ];
