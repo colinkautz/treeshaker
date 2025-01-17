@@ -1,6 +1,6 @@
 <script>
     import "@fontsource-variable/eb-garamond";
-    import "$lib/global.css";
+    import "$lib/styles/global.css";
     let {children} = $props();
 </script>
 
