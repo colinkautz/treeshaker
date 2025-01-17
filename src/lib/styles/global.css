@@ -17,7 +17,8 @@
 }
 
 body {
-    background-color: var(--color-deep-forest);
+    background-image: url("/treeshaker-background.png");
+    background-size: contain;
     color: var(--color-white);
     font-family: "EB Garamond Variable", serif;
     line-height: 1.5;

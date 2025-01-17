@@ -1,7 +1,6 @@
 <script>
     import Title from "$lib/components/Title.svelte";
     import Header from "$lib/components/Header.svelte";
-    import "$lib/styles/tree.css";
 
     let numberOfTurns = 9;
     const turnLabel = numberOfTurns > 1 ? "turns" : "turn";
