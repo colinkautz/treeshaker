@@ -9,19 +9,19 @@
 </script>
 
 <div class="leaderboard">
-    <h2>Leaderboard</h2>
+    <h2 class="cursor-default">Leaderboard</h2>
     <table>
         <thead>
             <tr>
-                <th scope="col" class="header">Username</th>
-                <th scope="col" class="header">Balance</th>
+                <th scope="col" class="header cursor-default">Username</th>
+                <th scope="col" class="header cursor-default">Balance</th>
             </tr>
         </thead>
         <tbody>
             {#each leaderBoardData as {username, leafs}, i}
                 <tr class={i % 2 === 0 ? 'even' : 'odd'}>
-                    <td>{username}</td>
-                    <td>{leafs}</td>
+                    <td><a href="https://twitch.tv/{username}">{username}</a></td>
+                    <td class="balance cursor-default">{leafs}</td>
                 </tr>
             {/each}
         </tbody>
@@ -29,6 +29,9 @@
 </div>
 
 <style>
+    .cursor-default {
+        cursor: default;
+    }
 
     .header {
         background-color: var(--color-golden-acorn);
@@ -38,6 +41,11 @@
         background-color: var(--color-pine-green);
         border-radius: 8px;
         padding: 10px;
+    }
+
+    a, a:visited {
+        text-decoration: none;
+        color: var(--color-white);
     }
 
     table {

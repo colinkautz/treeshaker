@@ -2,7 +2,7 @@
     let {text, isCentered} = $props()
 </script>
 
-<header class:center={isCentered}>
+<header class={isCentered ? "center" : ""}>
     <h1 class="header-text">{text}</h1>
 </header>
 
@@ -14,5 +14,9 @@
     .header-text {
         font-size: 40px;
         font-weight: normal;
+    }
+    
+    header {
+        cursor: default;
     }
 </style>
