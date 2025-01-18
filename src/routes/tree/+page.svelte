@@ -21,9 +21,9 @@
 
 <style>
     .the-tree {
+        cursor: not-allowed;
         position: relative;
         top: 125px;
-        cursor: not-allowed;
     }
 
     .the-tree.clickable {
