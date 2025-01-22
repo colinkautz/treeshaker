@@ -7,7 +7,7 @@
     const hasTurnsLeft = numberOfTurns > 0;
 </script>
 
-<Title text="Shake the tree!"/>
+<Title text="the tree"/>
 
 {#if hasTurnsLeft}
     <Header text="You have {numberOfTurns} {turnLabel} left, click the tree" isCentered={true}/>

@@ -1,5 +1,5 @@
 <script>
-    let {text, isCentered} = $props()
+    let {text, isCentered} = $props();
 </script>
 
 <header class={isCentered ? "center" : ""}>
