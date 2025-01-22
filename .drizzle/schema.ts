@@ -14,3 +14,9 @@ export const category = pgTable("category", {
 	maxValue: integer("max_value"),
 	spawnRate: integer("spawn_rate"),
 });
+
+export const users = pgTable("users", {
+	username: text().primaryKey().notNull(),
+	turnsLeft: integer("turns_left"),
+	balance: integer(),
+});
