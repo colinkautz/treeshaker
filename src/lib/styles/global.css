@@ -28,3 +28,9 @@ body {
 input, button, textarea, select {
     font: inherit;
 }
+
+@media (max-width: 767px) {
+    body {
+        background-size: cover;
+    }
+}
