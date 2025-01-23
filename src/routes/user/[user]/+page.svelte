@@ -4,23 +4,29 @@
 
     const {data} = $props();
     const fruitImages = data.images.filter(image => image.name !== "Bee");
-    const basicVeg = fruitImages.filter(image => image.category === "BasicVeg");
-    const berries = data.images.filter(image => image.category === "Berries");
-    const citrus = data.images.filter(image => image.category === "Citrus");
-    const commonFruit = data.images.filter(image => image.category === "Common");
-    const luxury = data.images.filter(image => image.category === "Luxury");
-    const premiumVeg = data.images.filter(image => image.category === "Premium");
-    const tropical = data.images.filter(image => image.category === "Tropical");
+    const produceCategoryList = data.categoryList;
 </script>
 
 <Title text="[user]'s page"/>
 
 <main>
-    <ImageContainer produceType={commonFruit} />
-    <ImageContainer produceType={basicVeg} />
-    <ImageContainer produceType={berries} />
-    <ImageContainer produceType={citrus} />
-    <ImageContainer produceType={tropical} />
-    <ImageContainer produceType={premiumVeg} />
-    <ImageContainer produceType={luxury} />
+    {#each produceCategoryList as category}
+        {@const group = fruitImages.filter(image => image.category === category)}
+        <ImageContainer imageGroup={group} category={category} />
+    {/each}
 </main>
+
+<style>
+    main {
+        margin: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+    
+    @media (min-width: 768px) {
+        main {
+            grid-template-columns: 850px;
+        }
+    }
+</style>

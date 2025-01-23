@@ -1,18 +1,5 @@
 import {list} from "@vercel/blob";
 import {BLOB_READ_WRITE_TOKEN} from "$env/static/private";
-import {db} from "$lib/server/db";
-import {produce} from "$lib/server/db/schema.js";
-
-const categoryData = await db.select().from(produce);
-
-export function getProduceCategory(name) {
-    if(name !== "Bee") {
-        const foundProduce = categoryData.find(obj => obj.name === name);
-        return foundProduce.category;
-    } else {
-        return "";
-    }
-}
 
 async function getImagesFromBlob() {
     try {
