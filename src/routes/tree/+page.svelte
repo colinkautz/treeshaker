@@ -34,4 +34,12 @@
         display: flex;
         justify-content: center;
     }
+
+    /*mobile styles*/
+    @media (max-width: 767px) {
+        .the-tree {
+            scale: 65%;
+            top: 50px;
+        }
+    }
 </style>

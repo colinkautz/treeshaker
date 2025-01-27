@@ -22,15 +22,22 @@ body {
     color: var(--color-white);
     font-family: "EB Garamond Variable", serif;
     line-height: 1.5;
-    min-height: 100vh;
 }
 
 input, button, textarea, select {
     font: inherit;
 }
 
+/*mobile styles*/
 @media (max-width: 767px) {
     body {
         background-size: cover;
+    }
+}
+
+/*desktop styles*/
+@media (min-width: 768px) {
+    body {
+        height: 100vh;
     }
 }
