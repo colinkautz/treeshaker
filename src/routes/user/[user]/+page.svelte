@@ -1,6 +1,6 @@
 <script>
     import Title from "$lib/components/Title.svelte";
-    import ImageContainer from "$lib/components/User/ImageContainer.svelte";
+    import ImageContainer from "$lib/components/ImageContainer.svelte";
 
     const {data} = $props();
     const fruitImages = data.images.filter(image => image.name !== "Bee");
