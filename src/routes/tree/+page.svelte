@@ -2,7 +2,7 @@
     import Title from "$lib/components/Title.svelte";
     import Header from "$lib/components/Header.svelte";
 
-    let numberOfTurns = 9;
+    let numberOfTurns = 1;
     const turnLabel = numberOfTurns > 1 ? "turns" : "turn";
     const hasTurnsLeft = numberOfTurns > 0;
 </script>
@@ -10,24 +10,39 @@
 <Title text="the tree"/>
 
 {#if hasTurnsLeft}
-    <Header text="You have {numberOfTurns} {turnLabel} left, click the tree" isCentered={true}/>
+    <Header text="You have {numberOfTurns} {turnLabel} left." needsTimer={true}/>
+    <button type="button" class="shake-tree" disabled={0}>Shake the Tree</button>
 {:else}
-    <Header text="Oh no, you are out of turns!" isCentered={true}/>
+    <Header text="Oh no, you are out of turns!"/>
 {/if}
 
 <main>
-    <img class="the-tree {hasTurnsLeft ? 'clickable' : ''}" src="/the-tree.png" alt="a tree"/>
+    <!-- TODO: add container for obtained item and current basket -->
+    <img class="the-tree" src="/the-tree.png" alt="a tree"/>
 </main>
 
 <style>
-    .the-tree {
-        cursor: not-allowed;
-        position: relative;
-        top: 125px;
+    .shake-tree {
+        display: block;
+        cursor: pointer;
+        border: none;
+        color: var(--color-white);
+        background-color: var(--color-golden-acorn);
+        border-radius: 4px;
+        margin: 0 auto;
+        width: 200px;
+        height: 40px;
+        font-size: 20px;
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
     }
 
-    .the-tree.clickable {
-        cursor: pointer;
+    .the-tree {
+        position: absolute;
+        top: 200px;
     }
 
     main {
@@ -38,8 +53,8 @@
     /*mobile styles*/
     @media (max-width: 767px) {
         .the-tree {
-            scale: 65%;
-            top: 50px;
+            scale: 70%;
+            top: 170px;
         }
     }
 </style>
