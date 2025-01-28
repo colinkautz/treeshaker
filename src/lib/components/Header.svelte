@@ -1,22 +1,28 @@
 <script>
-    let {text, isCentered} = $props();
+    let {text, needsTimer = false} = $props();
+
+
 </script>
 
-<header class={isCentered ? "center" : ""}>
+<header>
     <h1 class="header-text">{text}</h1>
+    {#if needsTimer}
+        <h2 class="header-timer">[xx] seconds until next turn.</h2>
+    {/if}
 </header>
 
 <style>
-    .center {
-        text-align: center;
-    }
-
     .header-text {
         font-size: 40px;
         font-weight: normal;
     }
+
+    .header-timer {
+        display: none;
+    }
     
     header {
         cursor: default;
+        text-align: center;
     }
 </style>

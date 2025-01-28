@@ -7,7 +7,7 @@
 
 <Title text="Welcome to TreeShaker"/>
 
-<Header text="Tree Shaker" isCentered={true}/>
+<Header text="Tree Shaker"/>
 <main>
     <LeaderBoard/>
     <LoginButton/>
