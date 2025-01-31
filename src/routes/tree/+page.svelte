@@ -2,16 +2,22 @@
     import Title from "$lib/components/Title.svelte";
     import Header from "$lib/components/Header.svelte";
 
-    let numberOfTurns = 1;
+    let numberOfTurns = 11;
     const turnLabel = numberOfTurns > 1 ? "turns" : "turn";
     const hasTurnsLeft = numberOfTurns > 0;
+
+    const shakeTree = () => {
+        if(numberOfTurns > 0) {
+            numberOfTurns = numberOfTurns - 1;
+        }
+    }
 </script>
 
 <Title text="the tree"/>
 
 {#if hasTurnsLeft}
     <Header text="You have {numberOfTurns} {turnLabel} left." needsTimer={true}/>
-    <button type="button" class="shake-tree" disabled={0}>Shake the Tree</button>
+    <button type="button" class="shake-tree" disabled={!hasTurnsLeft} onclick={shakeTree}>Shake the Tree</button>
 {:else}
     <Header text="Oh no, you are out of turns!"/>
 {/if}
