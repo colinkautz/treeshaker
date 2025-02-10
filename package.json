@@ -10,7 +10,7 @@
 		"db:push": "drizzle-kit push"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-vercel": "^5.5.3",
+		"@sveltejs/adapter-vercel": "^5.6.1",
 		"@sveltejs/kit": "^2.17.1",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"drizzle-kit": "^0.30.4",
@@ -19,7 +19,7 @@
 	},
 	"dependencies": {
 		"@fontsource-variable/eb-garamond": "^5.1.2",
-		"@neondatabase/serverless": "^0.10.4",
+		"@svelte-plugins/tooltips": "4.0.0-beta.1",
 		"@vercel/blob": "^0.27.1",
 		"drizzle-orm": "^0.39.2",
 		"postgres": "^3.4.5",
