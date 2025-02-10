@@ -14,7 +14,7 @@ export const produce = pgTable("produce", {
 });
 
 export const users = pgTable("users", {
-    user: text("username").primaryKey(),
+    userName: text("name").primaryKey(),
     turnsLeft: integer("turns_left"),
     balance: integer("balance")
 });

@@ -16,7 +16,7 @@ export const category = pgTable("category", {
 });
 
 export const users = pgTable("users", {
-	username: text().primaryKey().notNull(),
+	name: text().primaryKey().notNull(),
 	turnsLeft: integer("turns_left"),
 	balance: integer(),
 });
