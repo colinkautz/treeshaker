@@ -21,8 +21,7 @@
 		"@fontsource-variable/eb-garamond": "^5.1.2",
 		"@svelte-plugins/tooltips": "4.0.0-beta.1",
 		"@vercel/blob": "^0.27.1",
-		"drizzle-orm": "^0.39.2",
-		"postgres": "^3.4.5",
-		"svelte-hint": "^1.1.0"
+		"drizzle-orm": "^0.39.3",
+		"postgres": "^3.4.5"
 	}
 }

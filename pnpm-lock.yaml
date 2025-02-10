@@ -18,14 +18,11 @@ importers:
         specifier: ^0.27.1
         version: 0.27.1
       drizzle-orm:
-        specifier: ^0.39.2
-        version: 0.39.2(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(postgres@3.4.5)
+        specifier: ^0.39.3
+        version: 0.39.3(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(postgres@3.4.5)
       postgres:
         specifier: ^3.4.5
         version: 3.4.5
-      svelte-hint:
-        specifier: ^1.1.0
-        version: 1.1.0
     devDependencies:
       '@sveltejs/adapter-vercel':
         specifier: ^5.6.1
@@ -487,15 +484,6 @@ packages:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
 
-  '@floating-ui/core@1.6.9':
-    resolution: {integrity: sha512-uMXCuQ3BItDUbAMhIXw7UPXRfAlOAvZzdK9BWpE60MCn+Svt3aLn9jsPTi/WNGlRUu2uI0v5S7JiIUsbsvh3fw==}
-
-  '@floating-ui/dom@1.6.13':
-    resolution: {integrity: sha512-umqzocjDgNRGTuO7Q8CU32dkHkECqI8ZdMZ5Swb6QAM0t5rnlrN3lGo1hdpscRd3WS8T6DKYK4ephgIH9iRh3w==}
-
-  '@floating-ui/utils@0.2.9':
-    resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
-
   '@fontsource-variable/eb-garamond@5.1.2':
     resolution: {integrity: sha512-KRDV6mLLC8znoCZOQFXuA8bUL0aQtMDyJv9KGdlvlZIcM1ocpeLKG+AwJTk2EKfCZBMq1pff7d4vlFelgWCkRA==}
 
@@ -821,8 +809,8 @@ packages:
     resolution: {integrity: sha512-B2oJN5UkvwwNHscPWXDG5KqAixu7AUzZ3qbe++KU9SsQ+cZWR4DXEPYcvWplyFAno0dhRJECNEhNxiDmFaPGyQ==}
     hasBin: true
 
-  drizzle-orm@0.39.2:
-    resolution: {integrity: sha512-cuopo+udkKEGGpSxCML9ZRQ43R01zYCTsbqCrb9kJkabx1QEwFlPIFoQfx6E6tuawtiX930Gwyrkwj4inlpzDg==}
+  drizzle-orm@0.39.3:
+    resolution: {integrity: sha512-EZ8ZpYvDIvKU9C56JYLOmUskazhad+uXZCTCRN4OnRMsL+xAJ05dv1eCpAG5xzhsm1hqiuC5kAZUCS924u2DTw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -837,7 +825,6 @@ packages:
       '@tidbcloud/serverless': '*'
       '@types/better-sqlite3': '*'
       '@types/pg': '*'
-      '@types/react': '>=18'
       '@types/sql.js': '*'
       '@vercel/postgres': '>=0.8.0'
       '@xata.io/client': '*'
@@ -850,7 +837,6 @@ packages:
       pg: '>=8'
       postgres: '>=3'
       prisma: '*'
-      react: '>=18'
       sql.js: '>=1'
       sqlite3: '>=5'
     peerDependenciesMeta:
@@ -880,8 +866,6 @@ packages:
         optional: true
       '@types/pg':
         optional: true
-      '@types/react':
-        optional: true
       '@types/sql.js':
         optional: true
       '@vercel/postgres':
@@ -905,8 +889,6 @@ packages:
       postgres:
         optional: true
       prisma:
-        optional: true
-      react:
         optional: true
       sql.js:
         optional: true
@@ -1225,9 +1207,6 @@ packages:
   strip-ansi@7.1.0:
     resolution: {integrity: sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==}
     engines: {node: '>=12'}
-
-  svelte-hint@1.1.0:
-    resolution: {integrity: sha512-MEg0z80h9buwPSWkaKVfo8RzlXHDVBF64mTVlinEm0nCRH03/KtVIispVJLl3XlcvL+YG+fW+zKhnQ7bOFCaXg==}
 
   svelte@5.19.9:
     resolution: {integrity: sha512-860s752/ZZxHIsii31ELkdKBOCeAuDsfb/AGUXJyQyzUVLRSt4oqEw/BV5+2+mNg8mbqmD3OK+vMvwWMPM6f8A==}
@@ -1563,17 +1542,6 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@floating-ui/core@1.6.9':
-    dependencies:
-      '@floating-ui/utils': 0.2.9
-
-  '@floating-ui/dom@1.6.13':
-    dependencies:
-      '@floating-ui/core': 1.6.9
-      '@floating-ui/utils': 0.2.9
-
-  '@floating-ui/utils@0.2.9': {}
-
   '@fontsource-variable/eb-garamond@5.1.2': {}
 
   '@isaacs/cliui@8.0.2':
@@ -1882,7 +1850,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.39.2(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(postgres@3.4.5):
+  drizzle-orm@0.39.3(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(postgres@3.4.5):
     optionalDependencies:
       '@neondatabase/serverless': 0.10.4
       '@types/pg': 8.11.6
@@ -2255,10 +2223,6 @@ snapshots:
   strip-ansi@7.1.0:
     dependencies:
       ansi-regex: 6.1.0
-
-  svelte-hint@1.1.0:
-    dependencies:
-      '@floating-ui/dom': 1.6.13
 
   svelte@5.19.9:
     dependencies:
