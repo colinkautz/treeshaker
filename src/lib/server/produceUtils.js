@@ -1,4 +1,4 @@
-import {db} from "$lib/server/db";
+import {db} from "$lib/server/db/index.js";
 import {categories, produce} from "$lib/server/db/schema.js";
 
 const produceCategoryData = await db.select().from(produce);
