@@ -1,5 +1,6 @@
 <script>
     import Hint from "svelte-hint";
+    import {Tooltip} from "@svelte-plugins/tooltips";
     let {imageGroup, category} = $props();
     const formattedCategory = category.split(/(?=[A-Z])/).join(" ");
 </script>
@@ -8,14 +9,23 @@
     <h3 class="category-title">{formattedCategory}</h3>
     {#each imageGroup as image}
         {@const formattedName = image.name.split(/(?=[A-Z])/).join(" ")}
-        <Hint offset="0" placement="top">
+        <Tooltip
+                content={formattedName}
+                align="center"
+                maxWidth="none"
+                theme="image-tooltip">
             <img class="produce-image not-obtained" src={image.url} alt={formattedName}/>
-            <p slot="hint" class="tooltip">{formattedName}</p>
-        </Hint>
+        </Tooltip>
     {/each}
 </div>
 
 <style>
+    :global(.tooltip.image-tooltip) {
+        --tooltip-font-family: "EB Garamond Variable";
+        --tooltip-font-size: 16px;
+        --tooltip-padding: 10px;
+    }
+
     .category-title {
         padding-bottom: 5px;
     }
@@ -39,12 +49,5 @@
         .produce-image:first-of-type {
             margin-left: 0;
         }
-    }
-
-    .tooltip {
-        background-color: var(--color-black);
-        border-radius: 5px;
-        font-size: 20px;
-        padding: 0 5px;
     }
 </style>
