@@ -5,7 +5,7 @@ export async function load({params}) {
     const produceImages = await getProduceImages();
     const username = params.user;
 
-    return  {
+    return {
         images: produceImages.images.map(obj => ({...obj, category: getProduceCategory(obj.name)})),
         categoryList: getArrayOfCategories(),
         username
