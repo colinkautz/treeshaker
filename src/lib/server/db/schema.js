@@ -20,10 +20,10 @@ export const users = pgTable("users", {
 });
 
 export const obtainedProduce = pgTable("obtained_produce", {
-    username: text().notNull(),
+    userName: text("username").notNull(),
     produceName: text("produce_name").notNull(),
     quantity: integer().default(1).notNull(),
 }, (table) => [
-    primaryKey({ columns: [table.username, table.produceName], name: "obtained_produce_pkey"}),
+    primaryKey({ columns: [table.userName, table.produceName], name: "obtained_produce_pkey"}),
     check("quantity_check", sql`quantity > 0`),
 ]);

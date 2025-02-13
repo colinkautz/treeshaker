@@ -1,5 +1,9 @@
+<script>
+    let {text, link} = $props();
+</script>
+
 <div class="login-container">
-    <a class="login-button" href="/tree">Login with Twitch</a>
+    <a class="login-button" href={link}>{text}</a>
 </div>
 
 <style>

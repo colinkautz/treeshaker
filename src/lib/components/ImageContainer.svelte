@@ -1,5 +1,4 @@
 <script>
-    import Hint from "svelte-hint";
     import {Tooltip} from "@svelte-plugins/tooltips";
     let {imageGroup, category} = $props();
     const formattedCategory = category.split(/(?=[A-Z])/).join(" ");
@@ -28,6 +27,7 @@
 
     .category-title {
         padding-bottom: 5px;
+        color: var(--color-black);
     }
 
     .not-obtained {

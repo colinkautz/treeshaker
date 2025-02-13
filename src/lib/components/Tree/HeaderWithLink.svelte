@@ -9,6 +9,7 @@
 <style>
     a, a:visited {
         color: inherit;
+        text-decoration: none;
     }
 
     .header-text {

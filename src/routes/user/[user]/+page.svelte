@@ -1,6 +1,7 @@
 <script>
     import Title from "$lib/components/Title.svelte";
     import ImageContainer from "$lib/components/ImageContainer.svelte";
+    import ButtonStyledLink from "$lib/components/Home/ButtonStyledLink.svelte";
 
     const {data} = $props();
     const fruitImages = data.images.filter(image => image.name !== "Bee");
@@ -16,6 +17,7 @@
         <h3>Balance: §40,000</h3>
         <h3>Produce obtained: 0/65</h3>
     </div>
+    <ButtonStyledLink text="To the Tree!" link="/tree"/>
     <div class="produce-categories-container">
         {#each produceCategoryList as category}
             {@const group = fruitImages.filter(image => image.category === category)}
