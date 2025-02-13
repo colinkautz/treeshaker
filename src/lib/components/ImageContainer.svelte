@@ -19,12 +19,6 @@
 </div>
 
 <style>
-    :global(.tooltip.image-tooltip) {
-        --tooltip-font-family: "EB Garamond Variable";
-        --tooltip-font-size: 16px;
-        --tooltip-padding: 10px;
-    }
-
     .category-title {
         padding-bottom: 5px;
         color: var(--color-black);
