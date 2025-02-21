@@ -5,7 +5,7 @@ import {obtainedProduce, users} from "$lib/server/db/schema.js";
 export const getObtainedProduceData = async (username) => {
     return db.select({
         produce: obtainedProduce.produceName,
-        quantity: obtainedProduce.quantity,
+        quantity: obtainedProduce.quantity
     }).from(obtainedProduce).where(eq(obtainedProduce.userName, username))
 }
 

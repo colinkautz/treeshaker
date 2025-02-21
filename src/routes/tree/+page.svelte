@@ -48,9 +48,12 @@
     }
 
     const shakeTree = (event) => {
+        const normalCooldown = 90; //1m30s
+        const beeCooldown = 180; //3m
+
         if(user.numberOfTurns > 0) {
             user.numberOfTurns = user.numberOfTurns - 1;
-            disableButton(event.target, 90);
+            disableButton(event.target, normalCooldown);
         }
     }
 </script>

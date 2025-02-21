@@ -15,6 +15,7 @@
         return foundProduce ? foundProduce.quantity : 0;
 
     }
+
     onMount(() => {
         document.addEventListener("mouseover", (e) => {
             let classList = e.target.classList;
