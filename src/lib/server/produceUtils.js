@@ -2,7 +2,6 @@ import {db} from "$lib/server/db/index.js";
 import {categories, produce} from "$lib/server/db/schema.js";
 
 const produceCategoryData = await db.select().from(produce);
-const categoryList = await db.select({category: categories.category}).from(categories);
 
 export function getProduceCategory(name) {
     if(name !== "Bee") {
@@ -11,8 +10,4 @@ export function getProduceCategory(name) {
     } else {
         return "";
     }
-}
-
-export function getArrayOfCategories() {
-    return categoryList.map(item => item.category);
 }

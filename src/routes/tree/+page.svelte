@@ -1,14 +1,22 @@
 <script>
     import Title from "$lib/components/Title.svelte";
     import Header from "$lib/components/Header.svelte";
+    import Basket from "$lib/components/Tree/Basket.svelte";
+    import HeaderWithLink from "$lib/components/Tree/HeaderWithLink.svelte";
 
-    let numberOfTurns = $state(11);
-    let isDisabled = $state(false);
-    const hasTurns = $derived(numberOfTurns);
-    const turnsLabel = $derived(numberOfTurns > 1 ? "turns" : "turn");
+    const {data} = $props();
+
+    let user = $state({
+        name: data.data.userName,
+        numberOfTurns: data.data.turnsLeft,
+        balance: data.data.balance,
+    });
+    let isButtonDisabled = $state(false);
+    const hasTurns = $derived(user.numberOfTurns);
+    const turnsLabel = $derived(user.numberOfTurns > 1 ? "turns" : "turn");
 
     const disableButton = (element, duration) => {
-        isDisabled = true;
+        isButtonDisabled = true;
 
         const timeInMilliseconds = duration * 1000;
         const endTime = Date.now() + timeInMilliseconds;
@@ -25,24 +33,24 @@
             const msRemaining = endTime - Date.now();
 
             if(msRemaining <= 0) {
-                isDisabled = false;
+                isButtonDisabled = false;
                 element.innerText = "Shake the Tree";
             } else {
                 element.innerText = `${formatTime(msRemaining)}`;
             }
-        }, 100);
+        }, 50);
 
         setTimeout(() => {
             clearInterval(countdownInterval);
-            isDisabled = false;
+            isButtonDisabled = false;
             element.innerText = "Shake the Tree";
         }, timeInMilliseconds);
     }
 
     const shakeTree = (event) => {
-        if(numberOfTurns > 0) {
-            numberOfTurns = numberOfTurns - 1;
-            disableButton(event.target, 60);
+        if(user.numberOfTurns > 0) {
+            user.numberOfTurns = user.numberOfTurns - 1;
+            disableButton(event.target, 90);
         }
     }
 </script>
@@ -50,25 +58,20 @@
 <Title text="the tree"/>
 
 {#if hasTurns}
-    <Header text="You have {numberOfTurns} {turnsLabel} left." needsTimer={true}/>
-    <button type="button" class="shake-tree" disabled={isDisabled} onclick={shakeTree}>Shake the Tree</button>
+    <HeaderWithLink username={user.name} text="You have {user.numberOfTurns} {turnsLabel} left." />
+    <button type="button" class="shake-tree" disabled={isButtonDisabled} onclick={shakeTree}>Shake the Tree</button>
 {:else}
     <Header text="Oh no, you are out of turns!"/>
 {/if}
 
 <main>
-    <div class="produce-basket">
-        <span>[placeholder for basket, idc]</span>
-        <span>[this will need the current item, the name of said item, and then list of previous items]</span>
-    </div>
+    {#if isButtonDisabled}
+        <Basket />
+    {/if}
     <img class="the-tree" src="/the-tree.png" alt="a tree"/>
 </main>
 
 <style>
-    .produce-basket {
-        display: none;
-    }
-
     .shake-tree {
         display: block;
         cursor: pointer;
