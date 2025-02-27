@@ -4,8 +4,7 @@ import {pgTable, text, integer, primaryKey, check} from "drizzle-orm/pg-core";
 export const categories = pgTable("category", {
     category: text("category").primaryKey(),
     minValue: integer("min_value"),
-    maxValue: integer("max_value"),
-    spawnRate: integer("spawn_rate")
+    maxValue: integer("max_value")
 });
 
 export const produce = pgTable("produce", {

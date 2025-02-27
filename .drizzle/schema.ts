@@ -12,7 +12,6 @@ export const category = pgTable("category", {
 	category: text().primaryKey().notNull(),
 	minValue: integer("min_value"),
 	maxValue: integer("max_value"),
-	spawnRate: integer("spawn_rate"),
 });
 
 export const users = pgTable("users", {
