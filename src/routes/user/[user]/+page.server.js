@@ -1,5 +1,4 @@
 import {getProduceImages} from "$lib/server/imageUtils.js";
-import {getProduceCategory} from "$lib/server/produceUtils.js";
 import {getObtainedProduceData} from "$lib/server/userUtils.js";
 
 export async function load({params}) {
@@ -8,7 +7,7 @@ export async function load({params}) {
     const userObtainedData = await getObtainedProduceData(username)
 
     return {
-        images: produceImages.images.map(obj => ({...obj, category: getProduceCategory(obj.name)})),
+        images: produceImages.images,
         username,
         userObtainedData
     };
