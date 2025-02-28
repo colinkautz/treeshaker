@@ -9,12 +9,10 @@
     const userData = data.userObtainedData;
     let produceInfo;
 
-
-    function getQuantity(name) {
+    const getQuantity = (name) => {
         const foundProduce = userData.find(item => item.produce === name);
         return foundProduce ? foundProduce.quantity : 0;
-
-    }
+    };
 
     onMount(() => {
         document.addEventListener("mouseover", (e) => {
@@ -34,7 +32,7 @@
                 produceInfo.innerText = "";
             }
         });
-    })
+    });
 
 </script>
 
