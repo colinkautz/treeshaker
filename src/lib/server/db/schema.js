@@ -1,17 +1,6 @@
 import {sql} from "drizzle-orm";
 import {pgTable, text, integer, primaryKey, check} from "drizzle-orm/pg-core";
 
-export const categories = pgTable("category", {
-    category: text("category").primaryKey(),
-    minValue: integer("min_value"),
-    maxValue: integer("max_value")
-});
-
-export const produce = pgTable("produce", {
-    name: text("produce_name").primaryKey(),
-    category: text("category")
-});
-
 export const users = pgTable("users", {
     userName: text("name").primaryKey(),
     turnsLeft: integer("turns_left"),
