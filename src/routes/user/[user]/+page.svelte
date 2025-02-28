@@ -33,7 +33,6 @@
             }
         });
     });
-
 </script>
 
 <Title text={name}/>
