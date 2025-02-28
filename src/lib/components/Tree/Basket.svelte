@@ -1,16 +1,45 @@
+<script>
+    let {caught, basket} = $props();
+
+    const names = basket.map(item =>item.name);
+
+    const groupProduceItems = (arr) => {
+        const counts = {};
+        const result = [];
+
+        for (const item of arr) {
+            counts[item] = (counts[item] || 0) + 1;
+        }
+
+        for (const [item, count] of Object.entries(counts)) {
+            if(count > 1) {
+                result.push(`${item} (${count})`);
+            } else {
+                result.push(item);
+            }
+        }
+
+        return result.join(", ");
+    }
+
+    const formattedList = names.length ? groupProduceItems(names) : `(empty)`;
+</script>
+
+
 <div class="produce-basket">
     <div class="image-container">
-        <img src="https://i33jmajsl7wfihbv.public.blob.vercel-storage.com/treeshaker/produce-images/Apple-YHPr2g1zsdCQtRCAKlFKc5U5vlOEIw.png" alt="Apple">
+        <img src={caught.url} alt="{caught.name}">
+        <p>{caught.name}</p>
     </div>
     <div class="basket-items">
-        <h2 class="basket-title">Current Basket Items</h2>
-        <span class="basket-list">[empty]</span>
+        <h2 class="basket-title">Current Basket:</h2>
+        <span class="basket-list">{formattedList}</span>
     </div>
 </div>
 
 <style>
     .basket-items {
-        padding: 0 10px 10px;
+        padding: 0 5px 5px;
     }
 
     .basket-title {
@@ -18,6 +47,7 @@
     }
 
     .image-container {
+        text-align: center;
         align-content: center;
 
         > img {
@@ -27,11 +57,18 @@
 
     .produce-basket {
         display: grid;
-        grid-template-columns: 25% 75%;
-        text-align: center;
-        width: 375px;
+        grid-template-columns: 20% 80%;
+        width: 700px;
         border: 4px solid var(--color-deep-forest);
         border-radius: 4px;
         margin-top: 20px;
+    }
+
+    /*mobile styles*/
+    @media (max-width: 767px) {
+        .produce-basket {
+            grid-template-columns: 25% 75%;
+            width: 375px;
+        }
     }
 </style>
