@@ -49,11 +49,11 @@
             isButtonDisabled = false;
             element.innerText = "Shake the Tree";
         }, timeInMilliseconds);
-    }
+    };
 
     const getProduceImage = (produce) => {
         return data.images.find(image => image.name === produce.name);
-    }
+    };
 
     const shuffleArray = (arr) => {
         const result = [...arr];
@@ -65,9 +65,10 @@
         }
 
         return result;
-    }
+    };
 
     let currentTree = shuffleArray(treeData);
+
     const shakeTree = (event) => {
         let randomProduce;
         const randInt = Math.floor(Math.random() * currentTree.length);
@@ -85,7 +86,7 @@
             randomProduce = {name: "Bee"};
             basket = [];
             currentTree = shuffleArray(treeData);
-            console.log("WHOOPS YOU DIED LOL", currentTree);
+            console.log("WHOOPS YOU DIED LOL");
         }
 
         if(user.numberOfTurns > 0) {
@@ -95,19 +96,30 @@
             caughtProduce = getProduceImage(randomProduce);
             disableButton(event.target, cooldownTime);
         }
-    }
+    };
+
+    const sellItems = (basket) => {
+        console.log("SELLING ITEMS", basket);
+    };
 </script>
 
 <Title text="the tree"/>
 
 {#if hasTurns}
     <HeaderWithLink username={user.name} text="You have {user.numberOfTurns} {turnsLabel} left."/>
-    <button type="button" class="shake-tree" disabled={isButtonDisabled} onclick={shakeTree}>Shake the Tree</button>
 {:else}
     <Header text="Oh no, you are out of turns!"/>
 {/if}
 
 <main>
+    <div class="button-container">
+        {#if hasTurns}
+            <button type="button" class="shake-tree" disabled={isButtonDisabled} onclick={shakeTree}>Shake the Tree</button>
+        {/if}
+        {#if basket.length >= 5}
+            <button type="button" class="sell-items" onclick="{sellItems(basket)}">Sell Items</button>
+        {/if}
+    </div>
     {#if isButtonDisabled}
         <Basket caught={caughtProduce} basket={basket}/>
     {/if}
@@ -115,7 +127,7 @@
 </main>
 
 <style>
-    .shake-tree {
+    .shake-tree, .sell-items {
         display: block;
         cursor: pointer;
         border: none;
@@ -140,14 +152,31 @@
 
     main {
         display: flex;
-        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     /*mobile styles*/
     @media (max-width: 767px) {
+        .button-container {
+            display: block;
+        }
+
+        .sell-items {
+            margin-top: 10px;
+        }
+
         .the-tree {
             scale: 70%;
             top: 170px;
+        }
+    }
+
+    /*desktop styles*/
+    @media (min-width: 768px) {
+        .button-container {
+            display: flex;
+            gap: 10px;
         }
     }
 </style>
