@@ -19,7 +19,7 @@
     const hasTurns = $derived(user.numberOfTurns);
     const turnsLabel = $derived(user.numberOfTurns > 1 ? "turns" : "turn");
 
-    const disableButton = (element, duration) => {
+    function disableButton(element, duration) {
         isButtonDisabled = true;
 
         const timeInMilliseconds = duration * 1000;
@@ -49,13 +49,13 @@
             isButtonDisabled = false;
             element.innerText = "Shake the Tree";
         }, timeInMilliseconds);
-    };
+    }
 
-    const getProduceImage = (produce) => {
+    function getProduceImage(image) {
         return data.images.find(image => image.name === produce.name);
-    };
+    }
 
-    const shuffleArray = (arr) => {
+    function shuffleArray(arr) {
         const result = [...arr];
 
         for(let i = result.length - 1; i >= 0; i--) {
@@ -65,11 +65,11 @@
         }
 
         return result;
-    };
+    }
 
     let currentTree = shuffleArray(treeData);
 
-    const shakeTree = (event) => {
+    function shakeTree(event) {
         let randomProduce;
         const randInt = Math.floor(Math.random() * currentTree.length);
         const chosenCategory = currentTree[randInt];
@@ -96,11 +96,11 @@
             caughtProduce = getProduceImage(randomProduce);
             disableButton(event.target, cooldownTime);
         }
-    };
+    }
 
-    const sellItems = (basket) => {
+    function sellItems(basket) {
         console.log("SELLING ITEMS", basket);
-    };
+    }
 </script>
 
 <Title text="the tree"/>
@@ -117,7 +117,7 @@
             <button type="button" class="shake-tree" disabled={isButtonDisabled} onclick={shakeTree}>Shake the Tree</button>
         {/if}
         {#if basket.length >= 5}
-            <button type="button" class="sell-items" onclick="{sellItems(basket)}">Sell Items</button>
+            <button type="button" class="sell-items" onclick={sellItems}>Sell Items</button>
         {/if}
     </div>
     {#if isButtonDisabled}
