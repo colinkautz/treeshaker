@@ -11,16 +11,16 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^5.6.3",
-		"@sveltejs/kit": "^2.20.4",
+		"@sveltejs/kit": "^2.20.5",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"drizzle-kit": "^0.30.6",
-		"svelte": "^5.25.6",
-		"vite": "^6.2.5"
+		"svelte": "^5.25.11",
+		"vite": "^6.2.6"
 	},
 	"dependencies": {
 		"@fontsource-variable/eb-garamond": "^5.2.5",
-		"@vercel/blob": "^0.27.3",
-		"drizzle-orm": "^0.40.0",
+		"@vercel/blob": "^1.0.0",
+		"drizzle-orm": "^0.40.1",
 		"postgres": "^3.4.5"
 	}
 }
