@@ -51,7 +51,7 @@
         }, timeInMilliseconds);
     }
 
-    function getProduceImage(image) {
+    function getProduceImage(produce) {
         return data.images.find(image => image.name === produce.name);
     }
 
@@ -90,7 +90,7 @@
         }
 
         if(user.numberOfTurns > 0) {
-            const cooldownTime = isBee ? 10 : 5; //3m : 1.5m
+            const cooldownTime = isBee ? 20 : 10; //3m : 1.5m
 
             user.numberOfTurns = user.numberOfTurns - 1;
             caughtProduce = getProduceImage(randomProduce);

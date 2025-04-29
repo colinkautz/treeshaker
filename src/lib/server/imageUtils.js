@@ -17,7 +17,7 @@ export async function getProduceImages() {
     return {
         images: image.map(img => ({
             url: img.url,
-            name: img.pathname.split("/").pop().replace(".png", "")
+            name: img.pathname.split("/").pop().replace(".png", "").split("-")[0]
         }))
     }
 }

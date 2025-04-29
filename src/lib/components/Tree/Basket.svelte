@@ -20,7 +20,7 @@
         }
 
         return result.join(", ");
-    }
+    };
 
     const formattedList = names.length ? groupProduceItems(names) : `(empty)`;
 </script>
