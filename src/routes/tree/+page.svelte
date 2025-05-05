@@ -15,7 +15,11 @@
 
     let caughtProduce = $state();
     let basket = $state([]);
+    let sellingLabelText = $state("");
     let isButtonDisabled = $state(false);
+    let isSellingProduce = $state(false);
+    let totalMin = $derived(basket.reduce((sum, item) => sum + item.min, 0));
+    let totalMax = $derived(basket.reduce((sum, item) => sum + item.max, 0));
     const hasTurns = $derived(user.numberOfTurns);
     const turnsLabel = $derived(user.numberOfTurns > 1 ? "turns" : "turn");
 
@@ -90,7 +94,7 @@
         }
 
         if(user.numberOfTurns > 0) {
-            const cooldownTime = isBee ? 20 : 10; //3m : 1.5m
+            const cooldownTime = isBee ? 5 : 3; //3m : 1.5m
 
             user.numberOfTurns = user.numberOfTurns - 1;
             caughtProduce = getProduceImage(randomProduce);
@@ -98,8 +102,28 @@
         }
     }
 
-    function sellItems(basket) {
-        console.log("SELLING ITEMS", basket);
+    function getRandomValue(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function sellItems() {
+        let earnings = 0;
+
+        basket.forEach(item => {
+            const value = getRandomValue(item.min, item.max);
+            earnings += value;
+        });
+
+        user.balance += earnings;
+
+        sellingLabelText = `You made §${earnings} selling your basket`;
+        isSellingProduce = true;
+        basket = [];
+
+        setTimeout(() => {
+            sellingLabelText = "";
+            isSellingProduce = false;
+        }, 5000);
     }
 </script>
 
@@ -117,12 +141,18 @@
             <button type="button" class="shake-tree" disabled={isButtonDisabled} onclick={shakeTree}>Shake the Tree</button>
         {/if}
         {#if basket.length >= 5}
-            <button type="button" class="sell-items" onclick={sellItems}>Sell Items</button>
+            <button type="button" class="sell-items" onclick={sellItems}>
+                Sell Items (§{totalMin} - §{totalMax})
+            </button>
         {/if}
     </div>
     {#if isButtonDisabled}
         <Basket caught={caughtProduce} basket={basket}/>
     {/if}
+    {#if isSellingProduce}
+        <h3 class="selling-label">{sellingLabelText}</h3>
+    {/if}
+
     <img class="the-tree" src="/the-tree.png" alt="a tree"/>
 </main>
 

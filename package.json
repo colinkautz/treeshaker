@@ -10,16 +10,16 @@
 		"db:push": "drizzle-kit push"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-vercel": "^5.7.0",
-		"@sveltejs/kit": "^2.20.7",
+		"@sveltejs/adapter-vercel": "^5.7.1",
+		"@sveltejs/kit": "^2.20.8",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
-		"drizzle-kit": "^0.31.0",
+		"drizzle-kit": "^0.31.1",
 		"svelte": "^5.28.2",
-		"vite": "^6.3.3"
+		"vite": "^6.3.5"
 	},
 	"dependencies": {
 		"@fontsource-variable/eb-garamond": "^5.2.5",
-		"@vercel/blob": "^1.0.0",
+		"@vercel/blob": "^1.0.1",
 		"drizzle-orm": "^0.43.1",
 		"postgres": "^3.4.5"
 	}
