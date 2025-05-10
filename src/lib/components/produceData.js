@@ -1,9 +1,9 @@
-const commonCrops = 38;
-const marketFavorites = 23;
-const gourmetSelection = 15;
-const exoticTreasures = 9;
-const rareDelicacies = 5;
-const bees = 10;
+const commonCrops = 39;
+const marketFavorites = 24;
+const gourmetSelection = 16;
+const exoticTreasures = 10;
+const rareDelicacies = 6;
+const bees = 5;
 
 export
 const treeData = [
