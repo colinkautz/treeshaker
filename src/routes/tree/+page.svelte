@@ -22,6 +22,7 @@
     let totalMax = $derived(basket.reduce((sum, item) => sum + item.max, 0));
     const hasTurns = $derived(user.numberOfTurns);
     const turnsLabel = $derived(user.numberOfTurns > 1 ? "turns" : "turn");
+    const clonkData = data.clonkData;
 
     function disableButton(element, duration) {
         isButtonDisabled = true;
@@ -94,7 +95,7 @@
         }
 
         if(user.numberOfTurns > 0) {
-            const cooldownTime = isBee ? 5 : 3; //3m : 1.5m
+            const cooldownTime = isBee ? 1 : 1; //3m : 1.5m
 
             user.numberOfTurns = user.numberOfTurns - 1;
             caughtProduce = getProduceImage(randomProduce);
@@ -108,22 +109,37 @@
 
     function sellItems() {
         let earnings = 0;
+        let bonusEarnings = 0;
+        let boost = 0;
+        let copFishRatio = 0;
+
+        if(clonkData.boost > 0) {
+            boost = clonkData.boost / 10;
+        } else if(clonkData.boost < 0) {
+            boost = Math.abs(clonkData.boost) / 50;
+        }
+
+        if(clonkData.copFishRatio > 0) {
+            copFishRatio = Number(clonkData.copFishRatio);
+        }
 
         basket.forEach(item => {
             const value = getRandomValue(item.min, item.max);
             earnings += value;
         });
 
-        user.balance += earnings;
+        bonusEarnings = Math.round(earnings / (boost + copFishRatio));
 
-        sellingLabelText = `You made §${earnings} selling your basket`;
+        user.balance += (earnings + bonusEarnings);
+
+        sellingLabelText = bonusEarnings > 0 ? `You made §${earnings} plus an extra §${bonusEarnings}` : `You made §${earnings}`;
         isSellingProduce = true;
         basket = [];
 
         setTimeout(() => {
             sellingLabelText = "";
             isSellingProduce = false;
-        }, 5000);
+        }, 8000);
     }
 </script>
 
@@ -141,8 +157,9 @@
             <button type="button" class="shake-tree" disabled={isButtonDisabled} onclick={shakeTree}>Shake the Tree</button>
         {/if}
         {#if basket.length >= 5}
+            {@const asterisks = clonkData ? "*" : ""}
             <button type="button" class="sell-items" onclick={sellItems}>
-                Sell Items (§{totalMin} - §{totalMax})
+                Sell Items (§{totalMin} - §{totalMax}) {asterisks}
             </button>
         {/if}
     </div>
