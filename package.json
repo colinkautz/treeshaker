@@ -10,7 +10,7 @@
 		"db:push": "drizzle-kit push"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-vercel": "^5.7.1",
+		"@sveltejs/adapter-vercel": "^5.7.2",
 		"@sveltejs/kit": "^2.20.8",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"drizzle-kit": "^0.31.1",
