@@ -1,10 +1,10 @@
 <script>
     let leaderBoardData = [
-        {username: "nightshadedude", leafs: 70000},
-        {username: "jakecreatesstuff", leafs: 60000},
-        {username: "uwoslab", leafs: 55000},
-        {username: "lcolonq", leafs: 45000},
-        {username: "badcop_", leafs: 30000}
+        {username: "nightshadedude", balance: 7000},
+        {username: "dmmulroy", balance: 6000},
+        {username: "giacomo_cavalieri", balance: 5500},
+        {username: "lcolonq", balance: 4750},
+        {username: "badcop_", balance: 3000}
     ];
 </script>
 
@@ -18,10 +18,10 @@
             </tr>
         </thead>
         <tbody>
-            {#each leaderBoardData as {username, leafs}, i}
+            {#each leaderBoardData as {username, balance}, i}
                 <tr class={i % 2 === 0 ? 'even' : 'odd'}>
                     <td><a href="https://twitch.tv/{username}">{username}</a></td>
-                    <td class="balance cursor-default">{leafs}</td>
+                    <td class="balance cursor-default">{balance}</td>
                 </tr>
             {/each}
         </tbody>
