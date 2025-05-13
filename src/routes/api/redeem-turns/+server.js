@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { users } from "$lib/schema";
+import { users } from "$lib/server/db/schema.js";
 import { db } from "$lib/server/db";
 import { eq } from "drizzle-orm";
 
