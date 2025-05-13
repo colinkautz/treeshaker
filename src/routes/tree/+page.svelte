@@ -95,7 +95,7 @@
         }
 
         if(user.numberOfTurns > 0) {
-            const cooldownTime = isBee ? 5 : 3; //3m : 1.5m
+            const cooldownTime = isBee ? 5 : 3; //2.5m : 1m
 
             user.numberOfTurns = user.numberOfTurns - 1;
             caughtProduce = getProduceImage(randomProduce);
