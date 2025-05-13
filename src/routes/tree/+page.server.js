@@ -9,7 +9,6 @@ export async function load() {
     const produceImageSet = await getProduceImages();
 
     const res = await fetch(`https://api.colonq.computer/api/user/${currentUser}`);
-    //const negativeBoostTest = await fetch(`https://api.colonq.computer/api/user/meisaka`);
 
     if(res.ok) {
         const data = await res.text();
@@ -25,10 +24,10 @@ export async function load() {
             }
 
             if(copFishRatio) {
-                const num = parseInt(copFishRatio[1], 10);
-                const denom = parseInt(copFishRatio[2], 10);
+                const numerator = parseInt(copFishRatio[1], 10);
+                const denominator = parseInt(copFishRatio[2], 10);
 
-                clonkData.copFishRatio = ((num / denom) * 10).toFixed(1);
+                clonkData.copFishRatio = ((numerator / denominator) * 10).toFixed(1);
             } else {
                 clonkData.copFishRatio = 0;
             }

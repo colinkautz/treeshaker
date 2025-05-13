@@ -95,7 +95,7 @@
         }
 
         if(user.numberOfTurns > 0) {
-            const cooldownTime = isBee ? 1 : 1; //3m : 1.5m
+            const cooldownTime = isBee ? 5 : 3; //3m : 1.5m
 
             user.numberOfTurns = user.numberOfTurns - 1;
             caughtProduce = getProduceImage(randomProduce);
@@ -113,10 +113,12 @@
         let boost = 0;
         let copFishRatio = 0;
 
-        if(clonkData.boost > 0) {
-            boost = clonkData.boost / 10;
-        } else if(clonkData.boost < 0) {
-            boost = Math.abs(clonkData.boost) / 50;
+        if(clonkData.boost) {
+            if(clonkData.boost > 0) {
+                boost = clonkData.boost / 10;
+            } else if(clonkData.boost < 0) {
+                boost = Math.abs(clonkData.boost) / 50;
+            }
         }
 
         if(clonkData.copFishRatio > 0) {
@@ -128,7 +130,10 @@
             earnings += value;
         });
 
-        bonusEarnings = Math.round(earnings / (boost + copFishRatio));
+        const boostPlusRatio = boost + copFishRatio;
+        const denominator = boostPlusRatio > 0 ? boostPlusRatio : 1;
+
+        bonusEarnings = Math.round(earnings / denominator);
 
         user.balance += (earnings + bonusEarnings);
 
