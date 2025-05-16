@@ -10,9 +10,6 @@
     const userBalance = data.userBalance;
     let produceInfo;
 
-
-    console.log(userBalance);
-
     const getQuantity = (name) => {
         const foundProduce = userData.find(item => item.produce === name);
         return foundProduce ? foundProduce.quantity : 0;
