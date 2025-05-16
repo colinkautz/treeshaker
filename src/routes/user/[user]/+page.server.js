@@ -1,14 +1,16 @@
 import {getProduceImages} from "$lib/server/imageUtils.js";
-import {getObtainedProduceData} from "$lib/server/userUtils.js";
+import {getObtainedProduceData, getUserBalance} from "$lib/server/userUtils.js";
 
 export async function load({params}) {
     const produceImages = await getProduceImages();
     const username = params.user;
-    const userObtainedData = await getObtainedProduceData(username)
+    const userObtainedProduceData = await getObtainedProduceData(username);
+    const userBalance = await getUserBalance(username);
 
     return {
         images: produceImages.images,
         username,
-        userObtainedData
+        userObtainedProduceData,
+        userBalance: userBalance[0].balance,
     };
 }

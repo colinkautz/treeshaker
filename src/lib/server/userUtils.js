@@ -9,6 +9,10 @@ export const getObtainedProduceData = async (username) => {
     }).from(obtainedProduce).where(eq(obtainedProduce.userName, username))
 }
 
+export const getUserBalance = async (username) => {
+    return db.select({balance: users.balance}).from(users).where(eq(users.userName, username));
+}
+
 export const getUserData = async (username) => {
     return db.select().from(users).where(eq(users.userName, username));
 }

@@ -6,8 +6,12 @@
     const {data} = $props();
     const fruitImages = data.images.filter(image => image.name !== "Bee");
     const name = data.username;
-    const userData = data.userObtainedData;
+    const userData = data.userObtainedProduceData;
+    const userBalance = data.userBalance;
     let produceInfo;
+
+
+    console.log(userBalance);
 
     const getQuantity = (name) => {
         const foundProduce = userData.find(item => item.produce === name);
@@ -40,7 +44,7 @@
 <main>
     <div class="info-container">
         <h2>{name}'s profile</h2>
-        <h3>Balance: §40,000</h3>
+        <h3>Balance: §{userBalance}</h3>
         <h3>Produce obtained: {userData.length}/65</h3>
     </div>
     <ButtonStyledLink text="To the Tree!" link="/tree"/>
