@@ -4,13 +4,13 @@ import {getObtainedProduceData, getUserBalance} from "$lib/server/userUtils.js";
 export async function load({params}) {
     const produceImages = await getProduceImages();
     const username = params.user;
-    const userObtainedProduceData = await getObtainedProduceData(username);
+    const obtainedProduceData = await getObtainedProduceData(username);
     const userBalance = await getUserBalance(username);
 
     return {
         images: produceImages.images,
         username,
-        userObtainedProduceData,
+        obtainedProduceData,
         userBalance: userBalance[0].balance,
     };
 }

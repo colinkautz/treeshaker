@@ -6,7 +6,7 @@
     const {data} = $props();
     const fruitImages = data.images.filter(image => image.name !== "Bee");
     const name = data.username;
-    const userData = data.userObtainedProduceData;
+    const userData = data.obtainedProduceData;
     const userBalance = data.userBalance;
     let produceInfoText = $state("");
 
