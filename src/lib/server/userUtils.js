@@ -1,18 +1,31 @@
-import {eq} from "drizzle-orm";
-import {db} from "$lib/server/db/index.js";
-import {obtainedProduce, users} from "$lib/server/db/schema.js";
+import {supabase} from "$lib/server/db/index.js";
 
-export const getObtainedProduceData = async (username) => {
-    return db.select({
-        produce: obtainedProduce.produceName,
-        quantity: obtainedProduce.quantity
-    }).from(obtainedProduce).where(eq(obtainedProduce.userName, username))
+export async function getObtainedProduceData(username) {
+    const {data, error} = await supabase.from("obtained_produce").select(`produce_name, quantity`).eq("name", username);
+
+    if (error) {
+        console.error("Error fetching user data:", error);
+        return [];
+    }
+    return data || [];
 }
 
-export const getUserBalance = async (username) => {
-    return db.select({balance: users.balance}).from(users).where(eq(users.userName, username));
+export async function getUserBalance(username) {
+    const {data, error} = await supabase.from("users").select(`balance`).eq("name", username);
+
+    if (error) {
+        console.error("Error fetching user data:", error);
+        return [];
+    }
+    return data || [];
 }
 
-export const getUserData = async (username) => {
-    return db.select().from(users).where(eq(users.userName, username));
+export async function getUserData(username) {
+    const { data, error } = await supabase.from("users").select().eq("name", username);
+
+    if (error) {
+        console.error("Error fetching user data:", error);
+        return [];
+    }
+    return data || [];
 }

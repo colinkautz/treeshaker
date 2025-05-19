@@ -8,10 +8,10 @@
     const name = data.username;
     const userData = data.userObtainedProduceData;
     const userBalance = data.userBalance;
-    let produceInfo;
+    let produceInfoText = $state("");
 
     const getQuantity = (name) => {
-        const foundProduce = userData.find(item => item.produce === name);
+        const foundProduce = userData.find(item => item.produce_name === name);
         return foundProduce ? foundProduce.quantity : 0;
     };
 
@@ -21,7 +21,7 @@
             let quantity = e.target.dataset.quantity;
 
             if(classList.contains("produce") && quantity > 0) {
-                produceInfo.innerText = e.target.alt;
+                produceInfoText = e.target.alt;
             }
         });
 
@@ -30,7 +30,7 @@
             let quantity = e.target.dataset.quantity;
 
             if(classList.contains("produce") && quantity > 0) {
-                produceInfo.innerText = "";
+                produceInfoText = "";
             }
         });
     });
@@ -51,7 +51,7 @@
             <img class="produce {quantity === 0 ? 'not-obtained' : ''}" src={image.url} alt="{image.name} x {quantity}" data-quantity={quantity}/>
         {/each}
     </div>
-    <p bind:this={produceInfo} class="produce-info"></p>
+    <p class="produce-info">{produceInfoText}</p>
 </main>
 
 <style>

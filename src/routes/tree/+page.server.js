@@ -5,7 +5,8 @@ export async function load() {
     let currentUser = "colinahscopy_";
     let clonkData = {};
     const users = await getUserData(currentUser);
-    const userData = users.find((user) => user.userName === currentUser);
+    console.log(users);
+    const userData = users.find(user => user.name === currentUser);
     const produceImageSet = await getProduceImages();
 
     const res = await fetch(`https://api.colonq.computer/api/user/${currentUser}`);

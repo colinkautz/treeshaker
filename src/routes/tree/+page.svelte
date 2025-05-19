@@ -8,8 +8,8 @@
     const {data} = $props();
 
     let user = $state({
-        name: data.user.userName,
-        numberOfTurns: data.user.turnsLeft,
+        name: data.user.name,
+        numberOfTurns: data.user.turns_left,
         balance: data.user.balance,
     });
 

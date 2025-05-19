@@ -6,21 +6,18 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview",
-		"db:push": "drizzle-kit push"
+		"preview": "vite preview"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^5.7.2",
 		"@sveltejs/kit": "^2.21.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
-		"drizzle-kit": "^0.31.1",
 		"svelte": "^5.30.1",
 		"vite": "^6.3.5"
 	},
 	"dependencies": {
 		"@fontsource-variable/eb-garamond": "^5.2.5",
-		"@vercel/blob": "^1.0.1",
-		"drizzle-orm": "^0.43.1",
-		"postgres": "^3.4.5"
+		"@supabase/supabase-js": "^2.49.4",
+		"@vercel/blob": "^1.0.1"
 	}
 }
