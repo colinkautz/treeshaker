@@ -5,7 +5,6 @@ export async function load() {
     let currentUser = "colinahscopy_";
     let clonkData = {};
     const users = await getUserData(currentUser);
-    console.log(users);
     const userData = users.find(user => user.name === currentUser);
     const produceImageSet = await getProduceImages();
 
