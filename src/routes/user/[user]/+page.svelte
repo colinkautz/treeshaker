@@ -16,22 +16,22 @@
     };
 
     onMount(() => {
-        document.addEventListener("mouseover", (e) => {
-            let classList = e.target.classList;
-            let quantity = e.target.dataset.quantity;
+        function showProduceText(event, showInfoText) {
+            const targetElement = event.target;
+            const hasProduceClass = targetElement.classList.contains("produce");
+            const itemQuantity = parseInt(targetElement.dataset.quantity, 10) || 0;
 
-            if(classList.contains("produce") && quantity > 0) {
-                produceInfoText = e.target.alt;
+            if (hasProduceClass && itemQuantity > 0) {
+                produceInfoText = showInfoText ? targetElement.alt : "";
             }
+        }
+
+        document.addEventListener("mouseover", (e) => {
+            showProduceText(e, true);
         });
 
         document.addEventListener("mouseout", (e) => {
-            let classList = e.target.classList;
-            let quantity = e.target.dataset.quantity;
-
-            if(classList.contains("produce") && quantity > 0) {
-                produceInfoText = "";
-            }
+            showProduceText(e, false);
         });
     });
 </script>

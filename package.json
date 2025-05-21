@@ -18,6 +18,7 @@
 	"dependencies": {
 		"@fontsource-variable/eb-garamond": "^5.2.5",
 		"@supabase/supabase-js": "^2.49.5",
+		"@supabase/ssr": "^0.6.1",
 		"@vercel/blob": "^1.0.2"
 	}
 }
