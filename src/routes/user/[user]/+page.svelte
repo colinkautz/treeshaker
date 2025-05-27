@@ -1,7 +1,7 @@
 <script>
+    import {onMount} from "svelte";
     import Title from "$lib/components/Title.svelte";
     import ButtonStyledLink from "$lib/components/Home/ButtonStyledLink.svelte";
-    import {onMount} from "svelte";
 
     const {data} = $props();
     const fruitImages = data.images.filter(image => image.name !== "Bee");
