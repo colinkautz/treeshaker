@@ -149,13 +149,11 @@
 </script>
 
 <Title text="the tree"/>
-
 {#if hasTurns}
     <HeaderWithLink username={user.name} text="You have {user.numberOfTurns} {turnsLabel} left."/>
 {:else}
     <Header text="Oh no, you are out of turns!"/>
 {/if}
-
 <main>
     <div class="button-container">
         {#if hasTurns}

@@ -37,7 +37,6 @@
 </script>
 
 <Title text={name}/>
-
 <main>
     <div class="info-container">
         <h2>{name}'s profile</h2>
