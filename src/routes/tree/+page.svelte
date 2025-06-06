@@ -2,8 +2,8 @@
     import Title from "$lib/components/Title.svelte";
     import Header from "$lib/components/Header.svelte";
     import Basket from "$lib/components/Tree/Basket.svelte";
-    import HeaderWithLink from "$lib/components/Tree/HeaderWithLink.svelte";
-    import {produceData, treeData} from "$lib/components/produceData.js";
+    import {produceData, treeData} from "$lib/components/LocalData/data.js";
+    import {updateBalance, updateNumberOfTurns, updateObtainedProduce} from "$lib/clientUtils.js";
 
     const {data} = $props();
 
@@ -15,8 +15,10 @@
 
     let caughtProduce = $state();
     let basket = $state([]);
+    let basketCounts = $state({});
     let sellingLabelText = $state("");
     let isButtonDisabled = $state(false);
+    let showBasketElement = $state(false);
     let isSellingProduce = $state(false);
     let totalMin = $derived(basket.reduce((sum, item) => sum + item.min, 0));
     let totalMax = $derived(basket.reduce((sum, item) => sum + item.max, 0));
@@ -26,6 +28,7 @@
 
     function disableButton(element, duration) {
         isButtonDisabled = true;
+        showBasketElement = true;
 
         const timeInMilliseconds = duration * 1000;
         const endTime = Date.now() + timeInMilliseconds;
@@ -43,6 +46,7 @@
 
             if(msRemaining <= 0) {
                 isButtonDisabled = false;
+                showBasketElement = false;
                 element.innerText = "Shake the Tree";
             } else {
                 element.innerText = `${formatTime(msRemaining)}`;
@@ -52,6 +56,7 @@
         setTimeout(() => {
             clearInterval(countdownInterval);
             isButtonDisabled = false;
+            showBasketElement = false;
             element.innerText = "Shake the Tree";
         }, timeInMilliseconds);
     }
@@ -90,21 +95,28 @@
         } else {
             randomProduce = {name: "Bee"};
             basket = [];
+            basketCounts = {};
             currentTree = shuffleArray(treeData);
             console.log("WHOOPS YOU DIED LOL");
         }
 
         if(user.numberOfTurns > 0) {
-            const cooldownTime = isBee ? 5 : 3; //2.5m : 1m
+            const cooldownTime = isBee ? 10 : 5; //2:00 : 1:00
 
             user.numberOfTurns = user.numberOfTurns - 1;
             caughtProduce = getProduceImage(randomProduce);
             disableButton(event.target, cooldownTime);
+
+            updateNumberOfTurns(user.numberOfTurns, user.name);
         }
     }
 
     function getRandomValue(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function handleCountsUpdate(counts) {
+        basketCounts = counts;
     }
 
     function sellItems() {
@@ -136,23 +148,27 @@
         bonusEarnings = Math.round(earnings / denominator);
 
         user.balance += (earnings + bonusEarnings);
+        updateBalance(user.balance, user.name);
 
         sellingLabelText = bonusEarnings > 0 ? `You made §${earnings} plus an extra §${bonusEarnings}` : `You made §${earnings}`;
         isSellingProduce = true;
         basket = [];
+        updateObtainedProduce(basketCounts, user.name);
+        basketCounts = {};
 
         setTimeout(() => {
             sellingLabelText = "";
             isSellingProduce = false;
+            showBasketElement = false;
         }, 8000);
     }
 </script>
 
 <Title text="the tree"/>
 {#if hasTurns}
-    <HeaderWithLink username={user.name} text="You have {user.numberOfTurns} {turnsLabel} left."/>
+    <Header text="Hi, {user.name}! You have {user.numberOfTurns} {turnsLabel} left."/>
 {:else}
-    <Header text="Oh no, you are out of turns!"/>
+    <Header text="You have no turns! Go redeem some more."/>
 {/if}
 <main>
     <div class="button-container">
@@ -166,8 +182,8 @@
             </button>
         {/if}
     </div>
-    {#if isButtonDisabled}
-        <Basket caught={caughtProduce} basket={basket}/>
+    {#if showBasketElement}
+        <Basket caught={caughtProduce} basket={basket} onCountsUpdate={handleCountsUpdate}/>
     {/if}
     {#if isSellingProduce}
         <h3 class="selling-label">{sellingLabelText}</h3>

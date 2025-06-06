@@ -1,8 +1,9 @@
 import {getUserData} from "$lib/server/userUtils.js";
 import {getProduceImages} from "$lib/server/imageUtils.js";
 
-export async function load() {
-    let currentUser = "colinahscopy_";
+export async function load({locals}) {
+    const session = locals.session;
+    const currentUser = session.user.name.toLowerCase();
     let clonkData = {};
     const users = await getUserData(currentUser);
     const userData = users.find(user => user.name === currentUser);

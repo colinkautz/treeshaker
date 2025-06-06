@@ -1,11 +1,15 @@
 <script>
-    let {caught, basket} = $props();
+    let {caught, basket, onCountsUpdate} = $props();
 
     const names = basket.map(item =>item.name);
 
     const groupProduceItems = (arr) => {
         const counts = {};
         const result = [];
+
+        if(onCountsUpdate) {
+            onCountsUpdate(counts);
+        }
 
         for (const item of arr) {
             counts[item] = (counts[item] || 0) + 1;

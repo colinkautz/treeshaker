@@ -1,0 +1,22 @@
+import {betterAuth} from "better-auth";
+import {Pool} from "pg";
+import {AUTH_TWITCH_ID, AUTH_TWITCH_SECRET, POSTGRES_URL} from "$env/static/private";
+
+export const dbPool = new Pool({
+    connectionString: POSTGRES_URL
+});
+
+export const auth = betterAuth({
+    database: dbPool,
+    socialProviders: {
+        twitch: {
+            clientId: AUTH_TWITCH_ID,
+            clientSecret: AUTH_TWITCH_SECRET
+        }
+    },
+    account: {
+        accountLinking: {
+            enabled: true
+        }
+    }
+});
