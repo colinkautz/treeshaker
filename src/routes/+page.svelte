@@ -2,13 +2,22 @@
     import Title from "$lib/components/Title.svelte";
     import Header from "$lib/components/Header.svelte";
     import LeaderBoard from "$lib/components/Home/LeaderBoard.svelte";
+    import {authClient} from "$lib/auth-client.js";
+
+
+    async function signInWithTwitch() {
+        await authClient.signIn.social({
+            provider: "twitch",
+            callbackURL: `/dashboard`,
+        });
+    }
 </script>
 
 <Title text="Welcome to TreeShaker"/>
 <Header text="Tree Shaker"/>
 <main>
     <LeaderBoard/>
-    <button class="sign-in">Login with Twitch</button>
+    <button class="sign-in" onclick={signInWithTwitch}>Login with Twitch</button>
 </main>
 
 <style>
