@@ -18,5 +18,14 @@ export const auth = betterAuth({
         accountLinking: {
             enabled: true
         }
+    },
+    databaseHooks: {
+        user: {
+            create: {
+                after: async (user) => {
+                    await dbPool.query("INSERT INTO obtained_produce (name) values ($1) ON CONFLICT (name) DO NOTHING", [user.name.toLowerCase()]);
+                }
+            }
+        }
     }
 });
