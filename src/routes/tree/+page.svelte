@@ -1,9 +1,11 @@
 <script>
+    import { onMount, onDestroy } from "svelte";
     import Title from "$lib/components/Title.svelte";
     import Header from "$lib/components/Header.svelte";
     import Basket from "$lib/components/Tree/Basket.svelte";
     import {produceData, treeData} from "$lib/components/LocalData/data.js";
     import {updateBalance, updateNumberOfTurns, updateObtainedProduce} from "$lib/clientUtils.js";
+    import { createUserDataPoller } from "$lib/pollingUtils.js";
 
     const {data} = $props();
 
@@ -25,6 +27,35 @@
     const hasTurns = $derived(user.numberOfTurns);
     const turnsLabel = $derived(user.numberOfTurns > 1 ? "turns" : "turn");
     const clonkData = data.clonkData;
+
+    // Polling setup
+    let userDataPoller;
+
+    onMount(() => {
+        // Set up polling for user data updates
+        userDataPoller = createUserDataPoller(
+            user.name,
+            (updatedData) => {
+                // Update user state when data changes
+                user.numberOfTurns = updatedData.turns;
+                user.balance = updatedData.balance;
+
+                // Optional: Show a subtle notification when turns are updated
+                if (updatedData.turns > user.numberOfTurns) {
+                    console.log(`Turns updated! You now have ${updatedData.turns} turns.`);
+                }
+            },
+            5000 // Poll every 5 seconds
+        );
+
+        userDataPoller.start();
+    });
+
+    onDestroy(() => {
+        if (userDataPoller) {
+            userDataPoller.stop();
+        }
+    });
 
     function disableButton(element, duration) {
         isButtonDisabled = true;
