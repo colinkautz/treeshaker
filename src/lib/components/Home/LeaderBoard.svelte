@@ -1,11 +1,5 @@
 <script>
-    let leaderBoardData = [
-        {username: "nightshadedude", balance: 7000},
-        {username: "dmmulroy", balance: 6000},
-        {username: "giacomo_cavalieri", balance: 5500},
-        {username: "lcolonq", balance: 4750},
-        {username: "badcop_", balance: 3000}
-    ];
+    let {topFive = []} = $props();
 </script>
 
 <div class="leaderboard">
@@ -18,9 +12,9 @@
             </tr>
         </thead>
         <tbody>
-            {#each leaderBoardData as {username, balance}, i}
+            {#each topFive as {name, balance}, i}
                 <tr class={i % 2 === 0 ? 'even' : 'odd'}>
-                    <td><a href="https://twitch.tv/{username}">{username}</a></td>
+                    <td><a href="https://twitch.tv/{name}">{name}</a></td>
                     <td class="balance cursor-default">{balance}</td>
                 </tr>
             {/each}

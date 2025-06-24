@@ -4,6 +4,8 @@
     import LeaderBoard from "$lib/components/Home/LeaderBoard.svelte";
     import {authClient} from "$lib/auth-client.js";
 
+    const {data} = $props();
+    const leaderboardData = data.leaderboardData;
 
     async function signInWithTwitch() {
         await authClient.signIn.social({
@@ -16,7 +18,7 @@
 <Title text="Welcome to TreeShaker"/>
 <Header text="Tree Shaker"/>
 <main>
-    <LeaderBoard/>
+    <LeaderBoard topFive={leaderboardData}/>
     <button class="sign-in" onclick={signInWithTwitch}>Login with Twitch</button>
 </main>
 

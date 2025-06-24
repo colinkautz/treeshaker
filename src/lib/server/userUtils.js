@@ -15,6 +15,11 @@ export async function getUserData(username) {
     return query.rows;
 }
 
+export async function getLeaderboardData() {
+    const query = await dbPool.query("SELECT name, balance FROM user_game ORDER BY balance DESC LIMIT 5");
+    return query.rows;
+}
+
 export async function updateNumberOfTurns(turns, username) {
     await dbPool.query("UPDATE user_game SET turns_left = $1 WHERE name = $2", [turns, username]);
 }
