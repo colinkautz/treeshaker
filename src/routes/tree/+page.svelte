@@ -132,7 +132,7 @@
         }
 
         if(user.numberOfTurns > 0) {
-            const cooldownTime = isBee ? 10 : 5; //2:00 : 1:00
+            const cooldownTime = isBee ? 120 : 60; //2:00 : 1:00
 
             user.numberOfTurns = user.numberOfTurns - 1;
             caughtProduce = getProduceImage(randomProduce);

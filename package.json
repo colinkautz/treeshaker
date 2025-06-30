@@ -10,16 +10,16 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^5.7.2",
-		"@sveltejs/kit": "^2.22.0",
+		"@sveltejs/kit": "^2.22.2",
 		"@sveltejs/vite-plugin-svelte": "^5.1.0",
-		"svelte": "^5.34.7",
+		"svelte": "^5.34.9",
 		"vite": "^7.0.0"
 	},
 	"dependencies": {
 		"@fontsource-variable/eb-garamond": "^5.2.6",
-		"@supabase/supabase-js": "^2.50.1",
+		"@supabase/supabase-js": "^2.50.2",
 		"@vercel/blob": "^1.1.1",
-		"better-auth": "^1.2.10",
-		"pg": "^8.16.2"
+		"better-auth": "^1.2.12",
+		"pg": "^8.16.3"
 	}
 }
