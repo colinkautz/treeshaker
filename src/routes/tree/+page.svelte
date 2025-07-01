@@ -2,6 +2,7 @@
     import { onMount, onDestroy } from "svelte";
     import Title from "$lib/components/Title.svelte";
     import Header from "$lib/components/Header.svelte";
+    import Navigation from "$lib/components/Tree/Navigation.svelte";
     import Basket from "$lib/components/Tree/Basket.svelte";
     import {produceData, treeData} from "$lib/components/LocalData/data.js";
     import {updateBalance, updateNumberOfTurns, updateObtainedProduce} from "$lib/clientUtils.js";
@@ -202,6 +203,9 @@
     <Header text="You have no turns! Go redeem some more."/>
 {/if}
 <main>
+    {#if !showBasketElement}
+        <Navigation/>
+    {/if}
     <div class="button-container">
         {#if hasTurns}
             <button type="button" class="shake-tree" disabled={isButtonDisabled} onclick={shakeTree}>Shake the Tree</button>

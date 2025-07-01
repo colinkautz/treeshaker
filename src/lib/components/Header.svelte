@@ -1,5 +1,5 @@
 <script>
-    let {text} = $props();
+    const {text} = $props();
 </script>
 
 <header>
@@ -8,7 +8,7 @@
 
 <style>
     .header-text {
-        font-size: 40px;
+        font-size: 35px;
         font-weight: normal;
     }
 

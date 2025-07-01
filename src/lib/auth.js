@@ -24,6 +24,7 @@ export const auth = betterAuth({
             create: {
                 after: async (user) => {
                     await dbPool.query("INSERT INTO obtained_produce (name) values ($1) ON CONFLICT (name) DO NOTHING", [user.name.toLowerCase()]);
+                    await dbPool.query("INSERT INTO user_game (name, turns_left, balance) values ($1, 10, 0) ON CONFLICT DO NOTHING", [user.name.toLowerCase()]);
                 }
             }
         }
