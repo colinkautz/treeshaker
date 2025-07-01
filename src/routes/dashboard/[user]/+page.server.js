@@ -10,7 +10,7 @@ export async function load({params}) {
     return {
         images: produceImages.images,
         username,
-        obtainedProduceData,
-        userBalance: userBalance[0].balance,
+        obtainedProduceData: obtainedProduceData[0],
+        userBalance: userBalance[0].balance
     };
 }

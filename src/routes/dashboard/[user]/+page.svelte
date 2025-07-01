@@ -9,11 +9,12 @@
     const name = data.username;
     const userData = data.obtainedProduceData;
     const userBalance = data.userBalance;
+    const numberOfProduce = Object.values(userData).filter(value => value !== 0).length;
 </script>
 
 <Title text={name}/>
 <main>
-    <InfoContainer name={name} balance={userBalance} numberOfProduce={userData.length}/>
+    <InfoContainer name={name} balance={userBalance} numberOfProduce={numberOfProduce}/>
     <ButtonStyledLink text="To the Tree!" link="/tree"/>
     <ProduceImages images={produceImages} data={userData}/>
 </main>

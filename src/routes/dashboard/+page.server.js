@@ -13,6 +13,6 @@ export async function load({locals}) {
         images: produceImages.images,
         username,
         obtainedProduceData: obtainedProduceData[0],
-        userBalance: userBalance[0].balance,
+        userBalance: userBalance[0].balance
     };
 }

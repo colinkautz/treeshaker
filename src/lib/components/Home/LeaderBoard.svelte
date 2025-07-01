@@ -14,7 +14,7 @@
         <tbody>
             {#each topFive as {name, balance}, i}
                 <tr class={i % 2 === 0 ? 'even' : 'odd'}>
-                    <td><a href="https://twitch.tv/{name}">{name}</a></td>
+                    <td><a href="/dashboard/{name}">{name}</a></td>
                     <td class="balance cursor-default">{balance}</td>
                 </tr>
             {/each}

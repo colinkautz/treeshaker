@@ -11,5 +11,6 @@
 <style>
     .info-container {
         text-align: center;
+        cursor: default;
     }
 </style>
