@@ -47,7 +47,7 @@ export const produceData = [
     {name: "Lemon", category: "Common Crops", min: 1, max: 10},
     {name: "Lime", category: "Common Crops", min: 1, max: 10},
     {name: "Lychee", category: "Rare Delicacies", min: 45, max: 100},
-    {name: "Mandrain", category: "Gourmet Selection", min: 15, max: 35},
+    {name: "Mandarin", category: "Gourmet Selection", min: 15, max: 35},
     {name: "Mango", category: "Exotic Treasures", min: 25, max: 50},
     {name: "Melon", category: "Exotic Treasures", min: 25, max: 50},
     {name: "Mushroom", category: "Gourmet Selection", min: 15, max: 35},
