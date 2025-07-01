@@ -191,7 +191,7 @@
             sellingLabelText = "";
             isSellingProduce = false;
             showBasketElement = false;
-        }, 8000);
+        }, 5000);
     }
 </script>
 
