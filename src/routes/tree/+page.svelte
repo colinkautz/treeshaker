@@ -22,6 +22,7 @@
     let sellingLabelText = $state("");
     let isButtonDisabled = $state(false);
     let showBasketElement = $state(false);
+    let showNavigation = $state(true);
     let isSellingProduce = $state(false);
     let totalMin = $derived(basket.reduce((sum, item) => sum + item.min, 0));
     let totalMax = $derived(basket.reduce((sum, item) => sum + item.max, 0));
@@ -61,6 +62,7 @@
     function disableButton(element, duration) {
         isButtonDisabled = true;
         showBasketElement = true;
+        showNavigation = false;
 
         const timeInMilliseconds = duration * 1000;
         const endTime = Date.now() + timeInMilliseconds;
@@ -79,6 +81,7 @@
             if(msRemaining <= 0) {
                 isButtonDisabled = false;
                 showBasketElement = false;
+                showNavigation = true;
                 element.innerText = "Shake the Tree";
             } else {
                 element.innerText = `${formatTime(msRemaining)}`;
@@ -89,6 +92,7 @@
             clearInterval(countdownInterval);
             isButtonDisabled = false;
             showBasketElement = false;
+            showNavigation = true;
             element.innerText = "Shake the Tree";
         }, timeInMilliseconds);
     }
@@ -203,7 +207,7 @@
     <Header text="You have no turns! Go redeem some more."/>
 {/if}
 <main>
-    {#if !showBasketElement}
+    {#if showNavigation}
         <Navigation/>
     {/if}
     <div class="button-container">
