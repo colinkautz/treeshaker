@@ -204,7 +204,7 @@
 {#if hasTurns}
     <Header text="Hi, {user.name}! You have {user.numberOfTurns} {turnsLabel} left."/>
 {:else}
-    <Header text="You have no turns! Go redeem some more."/>
+    <Header text="You have no turns! Go redeem some more in chat."/>
 {/if}
 <main>
     {#if showNavigation}
