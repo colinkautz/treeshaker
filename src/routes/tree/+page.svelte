@@ -181,7 +181,9 @@
         const boostPlusRatio = boost + copFishRatio;
         const denominator = boostPlusRatio > 0 ? boostPlusRatio : 1;
 
-        bonusEarnings = Math.round(earnings / denominator);
+        if(denominator > 1) {
+            bonusEarnings = Math.round(earnings / denominator);
+        }
 
         user.balance += (earnings + bonusEarnings);
         updateBalance(user.balance, user.name);
