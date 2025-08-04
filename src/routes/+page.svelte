@@ -15,7 +15,7 @@
     }
 </script>
 
-<Title text="Welcome to TreeShaker"/>
+<Title text="Welcome to Tree Shaker"/>
 <Header text="Tree Shaker"/>
 <main>
     <LeaderBoard topFive={leaderboardData}/>
