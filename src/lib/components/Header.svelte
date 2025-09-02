@@ -20,4 +20,8 @@
         cursor: default;
         text-align: center;
     }
+
+    a, a:visited {
+        color: var(--color-white);
+    }
 </style>
