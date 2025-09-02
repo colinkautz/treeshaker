@@ -30,24 +30,16 @@
     const turnsLabel = $derived(user.numberOfTurns > 1 ? "turns" : "turn");
     const clonkData = data.clonkData;
 
-    // Polling setup
     let userDataPoller;
 
     onMount(() => {
-        // Set up polling for user data updates
         userDataPoller = createUserDataPoller(
             user.name,
             (updatedData) => {
-                // Update user state when data changes
                 user.numberOfTurns = updatedData.turns;
                 user.balance = updatedData.balance;
-
-                // Optional: Show a subtle notification when turns are updated
-                if (updatedData.turns > user.numberOfTurns) {
-                    console.log(`Turns updated! You now have ${updatedData.turns} turns.`);
-                }
             },
-            5000 // Poll every 5 seconds
+            5000 // 5 seconds
         );
 
         userDataPoller.start();
@@ -137,7 +129,7 @@
         }
 
         if(user.numberOfTurns > 0) {
-            const cooldownTime = isBee ? 120 : 60; //2:00 : 1:00
+            const cooldownTime = isBee ? 120 : 60; // 2:00 : 1:00
 
             user.numberOfTurns = user.numberOfTurns - 1;
             caughtProduce = getProduceImage(randomProduce);
@@ -206,7 +198,7 @@
 {#if hasTurns}
     <Header text="Hi, {user.name}! You have {user.numberOfTurns} {turnsLabel} left."/>
 {:else}
-    <Header text="You have no turns! Go redeem some more in chat."/>
+    <Header text="You have no turns! Go redeem some more in chat." isLink={true}/>
 {/if}
 <main>
     {#if showNavigation}

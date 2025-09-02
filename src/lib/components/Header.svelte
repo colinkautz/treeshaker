@@ -1,9 +1,13 @@
 <script>
-    const {text} = $props();
+    const {text, isLink = false} = $props();
 </script>
 
 <header>
-    <h1 class="header-text">{text}</h1>
+    {#if isLink}
+        <a href="https://twitch.tv/colinahscopy_"><h1 class="header-text">{text}</h1></a>
+    {:else}
+        <h1 class="header-text">{text}</h1>
+    {/if}
 </header>
 
 <style>
