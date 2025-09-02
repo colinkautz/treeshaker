@@ -28,7 +28,7 @@
     }
 
     .header {
-        background-color: var(--color-golden-acorn);
+        background-color: var(--color-rich-walnut);
     }
 
     .leaderboard {
@@ -56,10 +56,10 @@
     }
 
     tr.even {
-        background-color: rgb(255, 255, 255, 0.15);
+        background-color: rgb(255, 255, 255, 0.05);
     }
 
     tr.odd {
-        background-color: rgb(255, 255, 255, 0.05);
+        background-color: rgb(255, 255, 255, 0.15);
     }
 </style>
