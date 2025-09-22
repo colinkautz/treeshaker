@@ -10,10 +10,10 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^5.10.2",
-		"@sveltejs/kit": "^2.40.0",
+		"@sveltejs/kit": "^2.42.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.0",
-		"svelte": "^5.38.10",
-		"vite": "7.1.5"
+		"svelte": "^5.39.4",
+		"vite": "7.1.6"
 	},
 	"dependencies": {
 		"@fontsource-variable/eb-garamond": "^5.2.7",
