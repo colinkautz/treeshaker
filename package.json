@@ -9,17 +9,17 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-vercel": "^5.10.2",
-		"@sveltejs/kit": "^2.43.5",
+		"@sveltejs/adapter-vercel": "^5.10.3",
+		"@sveltejs/kit": "^2.44.0",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
-		"svelte": "^5.39.6",
-		"vite": "7.1.7"
+		"svelte": "^5.39.9",
+		"vite": "7.1.9"
 	},
 	"dependencies": {
 		"@fontsource-variable/eb-garamond": "^5.2.7",
-		"@supabase/supabase-js": "^2.58.0",
+		"@supabase/supabase-js": "^2.74.0",
 		"@vercel/blob": "^2.0.0",
-		"better-auth": "^1.3.17",
+		"better-auth": "^1.3.26",
 		"pg": "^8.16.3"
 	}
 }
