@@ -16,7 +16,7 @@ export async function getUserData(username) {
 }
 
 export async function getLeaderboardData() {
-    const query = await dbPool.query("SELECT name, balance FROM user_game ORDER BY balance DESC LIMIT 5");
+    const query = await dbPool.query("SELECT name, balance FROM user_game WHERE balance > 0 ORDER BY balance DESC LIMIT 5");
     return query.rows;
 }
 
